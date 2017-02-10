@@ -60,6 +60,38 @@ class my_theme {
 
 		register_post_type( 'quest', $args );
 	}
+
+	function api_endpoint() {
+		register_rest_route( 'quest/v1', '/post', array(
+			'methods' => 'POST',
+			'callback' => [ $this, 'create_quest' ],
+			'args' => array(
+				'title' => array(
+					'required' => true
+				),
+				'content' => array(
+					'required' => true
+				),
+			)
+		) );
+	}
+
+	function create_quest( WP_REST_Request $request ) {
+		$data = $request->get_params();
+
+		$post = array(
+			'post_title' => $data['title'],
+			'post_content' => $data['content'],
+			'post_status' => 'publish',
+			'post_type' => 'quest'
+		);
+
+		$quest_post = wp_insert_post( $post );
+
+		$response = new WP_REST_Response( get_post( $quest_post ) );
+		return $response;
+
+	}
 }
 
 $my_theme = new my_theme();
@@ -67,5 +99,6 @@ $my_theme = new my_theme();
 add_action( 'wp_enqueue_scripts', array( $my_theme, 'theme_enqueue' ) );
 add_action( 'after_setup_theme', array( $my_theme, 'theme_setup' ) );
 add_action( 'init', array( $my_theme, 'setup_cpt' ) );
+add_action( 'rest_api_init', array( $my_theme, 'api_endpoint' ) );
 
 ?>
