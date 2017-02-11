@@ -25,8 +25,10 @@
 			<div class="row">
 				<div class="col-sm-2">
 					<div class="logo">
-						Q4P
-						<span>Quest 4 Positivity</span>
+						<a href="/">
+							Q4P
+							<span>Quest 4 Positivity</span>
+						</a>
 					</div>
 				</div>
 				<div class="col-sm-10">
