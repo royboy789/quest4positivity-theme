@@ -1,7 +1,7 @@
 <?php get_header(); the_post(); ?>
 
 <div class="row">
-	<div class="col-sm-12">
+	<div class="col-sm-8 col-sm-offest-2 content">
 		<form class="form" id="share_quest_form" method="GET" action="/">
 			<input type="hidden" name="post_type" value="quest" />
 			<div class="form-group">
@@ -17,16 +17,16 @@
 
 <div class="row content" style="margin-top: 40px;">
 	<div class="col-sm-12">
-		<h2>What Others Have Shared</h2>
+		<h2>All</h2>
 		<?php
-			$args = array( 'post_type' => 'quest', 'posts_per_page' => -1 );
-			$loop = new WP_Query( $args );
-			if( $loop->have_posts() ) : while( $loop->have_posts() ) : $loop->the_post();
-		?>
-				<blockquote>
-					<?php the_content(); ?>
-					<em><?php the_title(); ?></em>
-				</blockquote>
+		$args = array( 'post_type' => 'quest', 'posts_per_page' => -1 );
+		$loop = new WP_Query( $args );
+		if( $loop->have_posts() ) : while( $loop->have_posts() ) : $loop->the_post();
+			?>
+			<blockquote>
+				<?php the_content(); ?>
+				<em><?php the_title(); ?></em>
+			</blockquote>
 		<?php endwhile; endif; ?>
 	</div>
 </div>
