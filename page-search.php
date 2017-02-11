@@ -2,7 +2,7 @@
 
 <div class="row">
 	<div class="col-sm-8 col-sm-offset-2 content">
-		<form class="form" id="share_quest_form" method="GET" action="/">
+		<form class="form" method="GET" action="/">
 			<input type="hidden" name="post_type" value="quest" />
 			<div class="form-group">
 				<label for="quest_name">Search For</label>
