@@ -59,8 +59,16 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-12 content">
-				<h1><?php the_title(); ?></h1>
-				<?php the_content(); ?>
+				<h2>The Origins of Quest for Positivity</h2>
+				<p>
+					I know the origin of the quest from Justin Scarred videos on <a href="https://www.youtube.com/user/justinscarred" target="_blank">Youtube</a>. <br/>
+					I have upped my quest since watching Justin! Here is the first video I saw with it, and its a good origin point.
+				</p>
+				<!-- 16:9 aspect ratio -->
+				<div class="embed-responsive embed-responsive-16by9">
+					<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/5N8rb_ktZhQ?feature=oembed"></iframe>
+				</div>
+
 			</div>
 		</div>
 	</div>
