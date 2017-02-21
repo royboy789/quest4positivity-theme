@@ -14,7 +14,12 @@
 					<blockquote>
 						<?php the_content(); ?>
 						<em><?php the_title(); ?></em>
-						<?php do_action( 'addthis_widget', get_the_permalink(), get_the_title(), 'small_toolbox' ); ?>
+						<br />
+						<div class="addthis_toolbox" addthis:url="<?php echo get_bloginfo('url'); ?>" addthis:title="<?php echo get_the_content() . ' #Q4P'; ?>">
+							<a class="addthis_button_facebook"></a>
+							<a class="addthis_button_twitter"></a>
+						</div>
+
 					</blockquote>
 				<?php endwhile; endif; wp_reset_query(); ?>
 			</div>
