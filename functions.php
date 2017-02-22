@@ -62,15 +62,15 @@ class my_theme {
 	}
 
 	function api_endpoint() {
-		register_rest_route( 'quest/v1', '/post', array(
+		register_rest_route( 'quest/v1', '/post/(?P<id>\d+)', array(
 			'methods' => 'POST',
 			'callback' => [ $this, 'create_quest' ],
 			'args' => array(
 				'title' => array(
-					'required' => true
+					'required' => false
 				),
 				'content' => array(
-					'required' => true
+					'required' => false
 				),
 			)
 		) );
@@ -79,17 +79,38 @@ class my_theme {
 	function create_quest( WP_REST_Request $request ) {
 		$data = $request->get_params();
 
-		$post = array(
-			'post_title' => $data['title'],
-			'post_content' => $data['content'],
-			'post_status' => 'publish',
-			'post_type' => 'quest'
-		);
+		if( !isset( $data['ID'] ) ) {
 
-		$quest_post = wp_insert_post( $post );
+			$post = array(
+				'post_title'   => $data['title'],
+				'post_content' => $data['content'],
+				'post_status'  => 'publish',
+				'post_type'    => 'quest'
+			);
 
-		$response = new WP_REST_Response( get_post( $quest_post ) );
-		return $response;
+			$quest_post = wp_insert_post( $post );
+			$response = new WP_REST_Response( get_post( $quest_post ) );
+			return $response;
+		} elseif( isset( $data['ID'] ) ) {
+
+			$post_id = $data['ID'];
+			$post = [
+				'ID'            => $post_id,
+				'post_status'   => 'draft'
+			];
+			$update_post = wp_update_post( $post );
+
+			if( !is_wp_error( $update_post ) ) {
+				$response = new WP_REST_Response( $update_post );
+
+				$response->set_status( 201 );
+
+				$response->header( 'Location', get_bloginfo( 'url' ) );
+
+				return $response;
+			}
+
+		}
 
 	}
 }
