@@ -27,10 +27,17 @@
 		$loop = new WP_Query( $args );
 		if( $loop->have_posts() ) : while( $loop->have_posts() ) : $loop->the_post();
 			?>
-			<blockquote>
-				<?php the_content(); ?>
+			<article>
+				<blockquote>
+					<?php the_content(); ?>
+					<?Php
+					if( $quest_author = get_post_meta( $post->ID, 'quest_author', true ) ) {
+						echo '<em>- ' . $quest_author . '</em>';
+					}
+					?>
+				</blockquote>
 				<em><?php the_title(); ?></em>
-			</blockquote>
+			</article>
 		<?php endwhile; endif; ?>
 	</div>
 </div>
