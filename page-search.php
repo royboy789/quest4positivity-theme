@@ -9,6 +9,10 @@
 				<input required id="quest_name" placeholder="Search For..." name="s" class="form-control" />
 			</div>
 			<div class="form-group">
+				<label for="quest_author">Author</label>
+				<input id="quest_author" placeholder="Author Search" name="author" class="form-control" />
+			</div>
+			<div class="form-group">
 				<input class="btn btn-primary btn-block" type="submit" value="Schearch Well" />
 			</div>
 		</form>
