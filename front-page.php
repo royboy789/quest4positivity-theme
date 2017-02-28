@@ -11,10 +11,16 @@
 				$loop = new WP_Query( $args );
 				if( $loop->have_posts() ) : while( $loop->have_posts() ) : $loop->the_post();
 					?>
-					<blockquote>
-						<?php the_content(); ?>
+					<article>
+						<blockquote>
+							<?php the_content(); ?>
+							<?Php
+								if( $quest_author = get_post_meta( $post->ID, 'quest_author', true ) ) {
+									echo '<em>- ' . $quest_author . '</em>';
+								}
+							?>
+						</blockquote>
 						<em><?php the_title(); ?></em>
-						<br />
 						<div class="addthis_toolbox" addthis:url="<?php echo get_bloginfo('url'); ?>" addthis:title="<?php echo get_the_content() . ' #Q4P'; ?>">
 							<a class="addthis_button_facebook"></a>
 							<a class="addthis_button_twitter"></a>
@@ -22,7 +28,7 @@
 								<i class="glyphicon glyphicon-flag"></i>
 							</a>
 						</div>
-					</blockquote>
+					</article>
 				<?php endwhile; endif; wp_reset_query(); ?>
 			</div>
 			<div class="col-sm-6 content">
@@ -42,6 +48,10 @@
 					<div class="form-group">
 						<label for="quest_text">What rule do you have for <strong>your</strong> Quest 4 Positivity?</label>
 						<textarea required id="quest_text" class="form-control" name="quest_text" placeholder="Circumstances are out of your control, how you react is."></textarea>
+					</div>
+					<div class="form-group">
+						<label for="quest_author">Author of Quote</label>
+						<input required id="quest_author" placeholder="Justin Scarred" name="quest_author" class="form-control" />
 					</div>
 					<div class="form-group">
 						<label for="quest_name">Your Name or Handle</label>

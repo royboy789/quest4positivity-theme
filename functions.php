@@ -62,6 +62,18 @@ class my_theme {
 	}
 
 	function api_endpoint() {
+		register_rest_route( 'quest/v1', '/post/', array(
+			'methods' => 'POST',
+			'callback' => [ $this, 'create_quest' ],
+			'args' => array(
+				'title' => array(
+					'required' => false
+				),
+				'content' => array(
+					'required' => false
+				),
+			)
+		) );
 		register_rest_route( 'quest/v1', '/post/(?P<id>\d+)', array(
 			'methods' => 'POST',
 			'callback' => [ $this, 'create_quest' ],
@@ -80,7 +92,7 @@ class my_theme {
 		$data = $request->get_params();
 
 		if( !isset( $data['ID'] ) ) {
-
+			// Create new quest
 			$post = array(
 				'post_title'   => $data['title'],
 				'post_content' => $data['content'],
@@ -89,8 +101,13 @@ class my_theme {
 			);
 
 			$quest_post = wp_insert_post( $post );
+
+			if( isset( $data['quest_author'] ) ) {
+				update_post_meta( $quest_post, 'quest_author', $data['quest_author'] );
+			}
 			$response = new WP_REST_Response( get_post( $quest_post ) );
 			return $response;
+
 		} elseif( isset( $data['ID'] ) ) {
 
 			$post_id = $data['ID'];
