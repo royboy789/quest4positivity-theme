@@ -76,11 +76,16 @@
 					I know the origin of the quest from Justin Scarred videos on <a href="https://www.youtube.com/user/justinscarred" target="_blank">Youtube</a>. <br/>
 					I have upped my quest since watching Justin! Here is the first video I saw with it, and its a good origin point.
 				</p>
-				<!-- 16:9 aspect ratio -->
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<p>
+					Thanks to Sometimes Mobber Kate for putting together this awesome playlist!
+				</p>
 				<div class="embed-responsive embed-responsive-16by9">
-					<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/5N8rb_ktZhQ?feature=oembed"></iframe>
+					<iframe class="emebed-respnosive-item" src="https://www.youtube.com/embed/videoseries?list=PLCLPeJiOkxvpH7vRV7YwK2fT1suFO3eeS" frameborder="0" allowfullscreen></iframe>
 				</div>
-
 			</div>
 		</div>
 	</div>
