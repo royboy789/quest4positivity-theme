@@ -3,7 +3,7 @@
 		<div class="row">
 			<div class="col-sm-4 col-sm-offset-3">
 				<div class="social-links">
-					<a href="https://https://www.facebook.com/justinscarred/">
+					<a href="https://www.facebook.com/justinscarred/">
 						<i class="fa fa-facebook-square"></i>
 					</a>
 					<a href="https://www.youtube.com/user/justinscarred">
