@@ -84,7 +84,7 @@
 					Thanks to Sometimes Mobber Kate for putting together this awesome playlist!
 				</p>
 				<div class="embed-responsive embed-responsive-16by9">
-					<iframe class="emebed-respnosive-item" src="https://www.youtube.com/embed/videoseries?list=PLCLPeJiOkxvpH7vRV7YwK2fT1suFO3eeS" frameborder="0" allowfullscreen></iframe>
+					<iframe class="emebed-responsive-item" src="https://www.youtube.com/embed/videoseries?list=PLCLPeJiOkxvpH7vRV7YwK2fT1suFO3eeS" frameborder="0" allowfullscreen></iframe>
 				</div>
 			</div>
 		</div>

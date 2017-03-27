@@ -1,22 +1,28 @@
-		<footer class="container-fluid">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-6">
-						&copy; <?php echo Date('Y'); ?> | Site not built by <strong><a href="https://www.youtube.com/user/justinscarred">Justin Scarred</a></strong>
-					</div>
-					<div class="col-sm-6 text-right">
-						<nav>
-							<ul>
-								<li><a href="https://www.youtube.com/user/justinscarred">Justin Scarred Videos</a></li>
-								<li><a href="https://www.facebook.com/groups/thesometimesmob">The Sometimes Mob</a></li>
-								<li><a href="https://www.patreon.com/justinscarred">Patreon</a></li>
-								<li><a href="https://shop.spreadshirt.com/livefastdiepoor/">Shop</a></li>
-							</ul>
-						</nav>
-					</div>
+<footer class="container-fluid">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-4 col-sm-offset-3">
+				<div class="social-links">
+					<a href="https://https://www.facebook.com/justinscarred/">
+						<i class="fa fa-facebook-square"></i>
+					</a>
+					<a href="https://www.youtube.com/user/justinscarred">
+						<i class="fa fa-youtube-square"></i>
+					</a>
+					<a href="https://twitter.com/JustinSCARRED">
+						<i class="fa fa-twitter-square"></i>
+					</a>
+					<a href="https://www.instagram.com/livefastdiepoor/?hl=en">
+						<i class="fa fa-instagram"></i>
+					</a>
 				</div>
 			</div>
-		</footer>
-	<?php wp_footer(); ?>
-	</body>
+			<nav class="col-sm-5 text-right">
+				<?php wp_nav_menu( array( 'theme_location' => 'footer', 'container' => '' ) ); ?>
+			</nav>
+		</div>
+	</div>
+</footer>
+<?php wp_footer(); ?>
+</body>
 </html>
