@@ -47,7 +47,7 @@
 				<form class="form" id="share_quest_form">
 					<div class="form-group">
 						<label for="quest_text">What rule do you have for <strong>your</strong> Quest 4 Positivity?</label>
-						<textarea required id="quest_text" class="form-control" name="quest_text" placeholder="Circumstances are out of your control, how you react is."></textarea>
+						<textarea required id="quest_text" class="form-control" name="quest_text" placeholder="You can’t control your circumstances, but you *can* control how you react to them"></textarea>
 					</div>
 					<div class="form-group">
 						<label for="quest_author">Author of Quote</label>
