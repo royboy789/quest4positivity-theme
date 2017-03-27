@@ -11,7 +11,9 @@
 </head>
 <body <?php body_class(); ?>>
 <header class="container-fluid logo">
-	<a href="<?Php echo get_bloginfo( 'url' ); ?>">&nbsp;</a>
+	<a href="<?Php echo get_bloginfo( 'url' ); ?>">
+		<img src="<?php echo get_template_directory_uri() . '/img/header_bg_new.png'; ?>" class="img-responsive" alt="Justin Scarred" />
+	</a>
 </header>
 <nav class="header container-fluid">
 	<div class="container">
