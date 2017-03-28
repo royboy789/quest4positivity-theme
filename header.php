@@ -27,6 +27,9 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-12">
+				<div class="brand">
+					Q4P
+				</div>
 				<ul>
 					<li><a href="http://www.justinscarred.com/shop">Hats & Shirts</a></li>
 					<li><a href="http://www.justinscarred.com/pins">Pins</a></li>

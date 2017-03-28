@@ -6,30 +6,32 @@
 		<div class="row share-quest">
 			<div class="col-sm-6 content">
 				<h2>What Others Have Shared</h2>
-				<?php
-				$args = array( 'post_type' => 'quest', 'posts_per_page' => -1 );
-				$loop = new WP_Query( $args );
-				if( $loop->have_posts() ) : while( $loop->have_posts() ) : $loop->the_post();
-					?>
-					<article>
-						<blockquote>
-							<?php the_content(); ?>
-							<?Php
-								if( $quest_author = get_post_meta( $post->ID, 'quest_author', true ) ) {
-									echo '<em>- ' . $quest_author . '</em>';
-								}
-							?>
-						</blockquote>
-						<em><?php the_title(); ?></em>
-						<div class="addthis_toolbox" addthis:url="<?php echo get_bloginfo('url'); ?>" addthis:title="<?php echo get_the_content() . ' #Q4P'; ?>">
-							<a class="addthis_button_facebook"></a>
-							<a class="addthis_button_twitter"></a>
-							<a title="report this" class="red report" data-id="<?php echo get_the_ID(); ?>" href="#">
-								<i class="glyphicon glyphicon-flag"></i>
-							</a>
-						</div>
-					</article>
-				<?php endwhile; endif; wp_reset_query(); ?>
+				<div class="all-quests-wrapper">
+					<?php
+					$args = array( 'post_type' => 'quest', 'posts_per_page' => -1 );
+					$loop = new WP_Query( $args );
+					if( $loop->have_posts() ) : while( $loop->have_posts() ) : $loop->the_post();
+						?>
+						<article>
+							<blockquote>
+								<?php the_content(); ?>
+								<?Php
+									if( $quest_author = get_post_meta( $post->ID, 'quest_author', true ) ) {
+										echo '<em>- ' . $quest_author . '</em>';
+									}
+								?>
+							</blockquote>
+							<em><?php the_title(); ?></em>
+							<div class="addthis_toolbox" addthis:url="<?php echo get_bloginfo('url'); ?>" addthis:title="<?php echo get_the_content() . ' #Q4P'; ?>">
+								<a class="addthis_button_facebook"></a>
+								<a class="addthis_button_twitter"></a>
+								<a title="report this" class="red report" data-id="<?php echo get_the_ID(); ?>" href="#">
+									<i class="glyphicon glyphicon-flag"></i>
+								</a>
+							</div>
+						</article>
+					<?php endwhile; endif; wp_reset_query(); ?>
+				</div>
 			</div>
 			<div class="col-sm-6 content">
 				<h2>Share Your Quest</h2>
