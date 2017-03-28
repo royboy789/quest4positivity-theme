@@ -1,7 +1,11 @@
 <footer class="container-fluid">
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-4 col-sm-offset-3">
+			<div class="col-sm-3 copyright">
+				&copy; <?php echo date('Y'); ?>
+				<em>site built by sometimes mobster &amp; <a href="https://roysivan.com" target="_blank">Web Developer, Roy</a></em>
+			</div>
+			<div class="col-sm-4">
 				<div class="social-links">
 					<a href="https://www.facebook.com/justinscarred/">
 						<i class="fa fa-facebook-square"></i>
