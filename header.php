@@ -31,6 +31,7 @@
 					Q4P
 				</div>
 				<ul>
+					<li><a href="/quest-wins">Quest Wins</a></li>
 					<li><a href="http://www.justinscarred.com/shop">Hats & Shirts</a></li>
 					<li><a href="http://www.justinscarred.com/pins">Pins</a></li>
 					<li><a href="https://www.patreon.com/justinscarred">Patreon</a></li>

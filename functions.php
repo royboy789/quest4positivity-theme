@@ -59,6 +59,42 @@ class my_theme {
 		);
 
 		register_post_type( 'quest', $args );
+
+		$labels = array(
+			'name'               => _x( 'Wins', 'post type general name', 'your-plugin-textdomain' ),
+			'singular_name'      => _x( 'Win', 'post type singular name', 'your-plugin-textdomain' ),
+			'menu_name'          => _x( 'Wins', 'admin menu', 'your-plugin-textdomain' ),
+			'name_admin_bar'     => _x( 'Win', 'add new on admin bar', 'your-plugin-textdomain' ),
+			'add_new'            => _x( 'Add New', 'win', 'your-plugin-textdomain' ),
+			'add_new_item'       => __( 'Add New Win', 'your-plugin-textdomain' ),
+			'new_item'           => __( 'New Win', 'your-plugin-textdomain' ),
+			'edit_item'          => __( 'Edit Win', 'your-plugin-textdomain' ),
+			'view_item'          => __( 'View Win', 'your-plugin-textdomain' ),
+			'all_items'          => __( 'All Wins', 'your-plugin-textdomain' ),
+			'search_items'       => __( 'Search Wins', 'your-plugin-textdomain' ),
+			'parent_item_colon'  => __( 'Parent Wins:', 'your-plugin-textdomain' ),
+			'not_found'          => __( 'No Wins found.', 'your-plugin-textdomain' ),
+			'not_found_in_trash' => __( 'No Wins found in Trash.', 'your-plugin-textdomain' )
+		);
+
+		$args = array(
+			'labels'             => $labels,
+			'description'        => __( 'Description.', 'your-plugin-textdomain' ),
+			'public'             => true,
+			'publicly_queryable' => true,
+			'show_ui'            => true,
+			'show_in_menu'       => true,
+			'query_var'          => true,
+			'rewrite'            => array( 'slug' => 'quest-wins' ),
+			'capability_type'    => 'post',
+			'has_archive'        => true,
+			'hierarchical'       => false,
+			'menu_position'      => null,
+			'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' ),
+			'show_in_rest'       => true
+		);
+
+		register_post_type( 'wins', $args );
 	}
 
 	function api_endpoint() {
@@ -86,12 +122,38 @@ class my_theme {
 				),
 			)
 		) );
+
+
+		register_rest_route( 'quest/v1', '/wins/', array(
+			'methods' => 'POST',
+			'callback' => [ $this, 'create_win' ],
+			'args' => array(
+				'title' => array(
+					'required' => false
+				),
+				'content' => array(
+					'required' => false
+				),
+			)
+		) );
+		register_rest_route( 'quest/v1', '/wins/(?P<id>\d+)', array(
+			'methods' => 'POST',
+			'callback' => [ $this, 'create_win' ],
+			'args' => array(
+				'title' => array(
+					'required' => false
+				),
+				'content' => array(
+					'required' => false
+				),
+			)
+		) );
 	}
 
 	function create_quest( WP_REST_Request $request ) {
 		$data = $request->get_params();
 
-		if( !isset( $data['ID'] ) ) {
+		if ( ! isset( $data['ID'] ) ) {
 			// Create new quest
 			$post = array(
 				'post_title'   => $data['title'],
@@ -108,26 +170,65 @@ class my_theme {
 			$response = new WP_REST_Response( get_post( $quest_post ) );
 			return $response;
 
-		} elseif( isset( $data['ID'] ) ) {
+		}
 
-			$post_id = $data['ID'];
-			$post = [
-				'ID'            => $post_id,
-				'post_status'   => 'draft'
-			];
-			$update_post = wp_update_post( $post );
+		$post_id = $data['ID'];
+		$post = [
+			'ID'            => $post_id,
+			'post_status'   => 'draft'
+		];
+		$update_post = wp_update_post( $post );
 
-			if( !is_wp_error( $update_post ) ) {
-				$response = new WP_REST_Response( $update_post );
+		if( !is_wp_error( $update_post ) ) {
+			$response = new WP_REST_Response( $update_post );
 
-				$response->set_status( 201 );
+			$response->set_status( 201 );
 
-				$response->header( 'Location', get_bloginfo( 'url' ) );
+			$response->header( 'Location', get_bloginfo( 'url' ) );
 
-				return $response;
-			}
+			return $response;
+		}
+
+		return false;
+
+	}
+
+	function create_win( WP_REST_Request $request ) {
+		$data = $request->get_params();
+
+		if ( ! isset( $data['ID'] ) ) {
+			// Create new quest
+			$post = array(
+				'post_title'   => $data['title'],
+				'post_content' => $data['content'],
+				'post_status'  => 'publish',
+				'post_type'    => 'wins'
+			);
+
+			$quest_post = wp_insert_post( $post );
+			$response = new WP_REST_Response( get_post( $quest_post ) );
+			return $response;
 
 		}
+
+		$post_id = $data['ID'];
+		$post = [
+			'ID'            => $post_id,
+			'post_status'   => 'draft'
+		];
+		$update_post = wp_update_post( $post );
+
+		if( !is_wp_error( $update_post ) ) {
+			$response = new WP_REST_Response( $update_post );
+
+			$response->set_status( 201 );
+
+			$response->header( 'Location', get_bloginfo( 'url' ) );
+
+			return $response;
+		}
+
+		return false;
 
 	}
 }
