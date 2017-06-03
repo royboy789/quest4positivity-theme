@@ -28,9 +28,7 @@
 									<?php if ( $likes = get_post_meta( $post->ID, 'likes', true ) ) : echo '<span class="count">' . $likes . '</span> people like this'; endif; ?>
 								</a>
 							</div>
-							<div class="addthis_toolbox" addthis:url="<?php echo get_bloginfo('url'); ?>" addthis:title="<?php echo get_the_content() . ' #Q4P'; ?>">
-								<a class="addthis_button_facebook"></a>
-								<a class="addthis_button_twitter"></a>
+							<div>
 								<a title="report this" class="red report" data-id="<?php echo get_the_ID(); ?>" href="#">
 									<i class="glyphicon glyphicon-flag"></i>
 								</a>
