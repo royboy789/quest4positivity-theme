@@ -148,6 +148,18 @@ class my_theme {
 				),
 			)
 		) );
+		register_rest_route( 'quest/v1', '/wins/like/(?P<id>\d+)', array(
+			'methods' => 'POST',
+			'callback' => [ $this, 'like_win' ],
+			'args' => array(
+				'title' => array(
+					'required' => false
+				),
+				'content' => array(
+					'required' => false
+				),
+			)
+		) );
 	}
 
 	function create_quest( WP_REST_Request $request ) {
@@ -230,6 +242,24 @@ class my_theme {
 
 		return false;
 
+	}
+
+	function like_win( WP_REST_Request $request ) {
+		$data = $request->get_params();
+
+		if ( ! isset( $data['ID'] ) ) {
+			return false;
+		}
+
+		$post_id = $data['ID'];
+		$new_likes = 1;
+		if( $current_likes = (int) get_post_meta( $post_id, 'likes', true ) ) {
+			$new_likes = $current_likes+1;
+		}
+
+		update_post_meta( $post_id, 'likes', $new_likes );
+		$response = new WP_REST_Response( array( 'post' => $post_id, 'likes' => $new_likes, 'current_likes' => $current_likes, 'current_likes_meta' => get_post_meta( $post_id, 'likes', true ) ) );
+		return $response;
 	}
 }
 

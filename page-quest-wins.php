@@ -5,7 +5,7 @@
 	<div class="container">
 		<div class="row share-quest">
 			<div class="col-sm-6 content">
-				<h2>What Others Have Shared</h2>
+				<h2>Quest For Positivity Wins!</h2>
 				<div class="all-quests-wrapper">
 					<?php
 					$args = array( 'post_type' => 'wins', 'posts_per_page' => -1 );
@@ -22,6 +22,12 @@
 								?>
 							</blockquote>
 							<em><?php the_title(); ?></em>
+							<div>
+								<a title="like this" class="thumbs-up" data-id="<?php echo get_the_ID(); ?>" href="#">
+									<i class="glyphicon glyphicon-thumbs-up"></i>
+									<?php if ( $likes = get_post_meta( $post->ID, 'likes', true ) ) : echo '<span class="count">' . $likes . '</span> people like this'; endif; ?>
+								</a>
+							</div>
 							<div class="addthis_toolbox" addthis:url="<?php echo get_bloginfo('url'); ?>" addthis:title="<?php echo get_the_content() . ' #Q4P'; ?>">
 								<a class="addthis_button_facebook"></a>
 								<a class="addthis_button_twitter"></a>
@@ -36,10 +42,10 @@
 			<div class="col-sm-6 content">
 				<h2>Share Your Win</h2>
 				<p>
-					Finding the positive in life can really be hard sometimes. We all have our own Quest 4 Positivity.
+					The quest can be hard, it can be tough. Sometimes you get a small win, sometimes you get a big win. Every win matters, every win helps and should motivate you to push harder
 				</p>
 				<p>
-					Share rules you have to get through your quest. Each one of us is different, but can learn from each other on our own quests.
+					Share your win below!
 				</p>
 				<hr />
 				<div id="schleep_well" style="display: none" class="text-center">
