@@ -54,7 +54,7 @@
 				</div>
 				<form class="form" id="share_quest_win_form">
 					<div class="form-group">
-						<label for="quest_text">What rule do you have for <strong>your</strong> Quest 4 Positivity?</label>
+						<label for="quest_text">What was your Quest Win?</label>
 						<textarea required id="quest_text" class="form-control" name="quest_text" placeholder="You can’t control your circumstances, but you *can* control how you react to them"></textarea>
 					</div>
 					<div class="form-group">
@@ -62,7 +62,7 @@
 						<input required id="quest_name" placeholder="Name" name="quest_name" class="form-control" />
 					</div>
 					<div class="form-group">
-						<input class="btn btn-primary btn-block" type="submit" value="Do Your Duty" />
+						<input required class="btn btn-primary btn-block" type="submit" value="Yay Winning!" />
 					</div>
 				</form>
 
