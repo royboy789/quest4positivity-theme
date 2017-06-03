@@ -71,28 +71,4 @@
 	</div>
 </div>
 
-<div class="container-fluid about-q4p-container">
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-12 content">
-				<h2>The Origins of Quest for Positivity</h2>
-				<p>
-					I know the origin of the quest from Justin Scarred videos on <a href="https://www.youtube.com/user/justinscarred" target="_blank">Youtube</a>. <br/>
-					I have upped my quest since watching Justin! Here is the first video I saw with it, and its a good origin point.
-				</p>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-12">
-				<p>
-					Thanks to Sometimes Mobber Kate for putting together this awesome playlist!
-				</p>
-				<div class="embed-responsive embed-responsive-16by9">
-					<iframe class="emebed-responsive-item" src="https://www.youtube.com/embed/videoseries?list=PLCLPeJiOkxvpH7vRV7YwK2fT1suFO3eeS" frameborder="0" allowfullscreen></iframe>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
 <?php get_footer(); ?>
